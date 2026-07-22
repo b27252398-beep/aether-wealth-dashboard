@@ -1,9 +1,10 @@
 import { useBudgetStore } from '../store/useBudgetStore'
+import { useShallow } from 'zustand/react/shallow'
 import NetWorthCrystal from './NetWorthCrystal'
 import { formatCurrency } from '../lib/formatters'
 
 export default function HeroNetWorth() {
-  const totals = useBudgetStore((s) => s.totals())
+  const totals = useBudgetStore(useShallow((s) => s.totals()))
   const isUp = totals.netWorth >= 0
   const retentionPct =
     totals.income > 0 ? Math.round((totals.netWorth / totals.income) * 100) : 0

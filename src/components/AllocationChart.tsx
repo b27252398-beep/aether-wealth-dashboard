@@ -1,12 +1,13 @@
 import { useMemo } from 'react'
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts'
 import { useBudgetStore } from '../store/useBudgetStore'
+import { useShallow } from 'zustand/react/shallow'
 import { CHART_COLORS } from '../lib/constants'
 import type { AllocationDataPoint } from '../types'
 
 export default function AllocationChart() {
   const transactions = useBudgetStore((s) => s.transactions)
-  const insight = useBudgetStore((s) => s.insight())
+  const insight = useBudgetStore(useShallow((s) => s.insight()))
 
   const data = useMemo((): AllocationDataPoint[] => {
     const map: Record<string, number> = {}
