@@ -61,7 +61,7 @@ export const useBudgetStore = create<BudgetStore>()(
 
         set((state) => {
           // @ts-ignore mapping supabase types to local types
-          state.transactions = txRes.data.map(t => ({
+          state.transactions = (txRes.data || []).map((t: any) => ({
             id: t.id,
             title: t.title,
             amount: Number(t.amount),
@@ -72,7 +72,7 @@ export const useBudgetStore = create<BudgetStore>()(
           }))
 
           if (goalsRes.data && goalsRes.data.length > 0) {
-            state.goals = goalsRes.data.map(g => ({
+            state.goals = goalsRes.data.map((g: any) => ({
               id: g.id,
               title: g.title,
               target: Number(g.target),
