@@ -1,29 +1,36 @@
 import { createClient } from '@supabase/supabase-js'
 import { Database } from '../types/supabase'
 
-// Using environment variables for Supabase credentials.
-// For Vite, environment variables must be prefixed with VITE_.
-// VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY should be set in .env.local
-let supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://placeholder-project.supabase.co'
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-anon-key'
+let supabaseUrl = import.meta.env.VITE_SUPABASE_URL || ''
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || ''
 
-// Ensure URL has http/https protocol
 if (supabaseUrl && !supabaseUrl.startsWith('http')) {
   supabaseUrl = `https://${supabaseUrl}`
 }
 
+export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey)
+
 let client: any
-try {
-  client = createClient<Database>(supabaseUrl, supabaseAnonKey)
-} catch (error) {
-  console.error('Failed to initialize Supabase client:', error)
-  // Create a dummy client to prevent synchronous crashes
+
+if (isSupabaseConfigured) {
+  try {
+    client = createClient<Database>(supabaseUrl, supabaseAnonKey)
+  } catch (error) {
+    console.error('Failed to initialize Supabase client:', error)
+    createDummyClient()
+  }
+} else {
+  console.warn('Supabase environment variables are missing. Using offline dummy client.')
+  createDummyClient()
+}
+
+function createDummyClient() {
   client = {
     from: () => ({
       select: () => ({ order: () => Promise.resolve({ data: [], error: null }) }),
-      insert: () => ({ select: () => ({ single: () => Promise.resolve({ data: null, error: new Error('Invalid Supabase Config') }) }) }),
-      update: () => Promise.resolve({ data: null, error: new Error('Invalid Supabase Config') }),
-      delete: () => Promise.resolve({ data: null, error: new Error('Invalid Supabase Config') }),
+      insert: () => ({ select: () => ({ single: () => Promise.resolve({ data: null, error: new Error('Offline mode: Cannot modify data.') }) }) }),
+      update: () => Promise.resolve({ data: null, error: new Error('Offline mode: Cannot modify data.') }),
+      delete: () => Promise.resolve({ data: null, error: new Error('Offline mode: Cannot modify data.') }),
     })
   }
 }

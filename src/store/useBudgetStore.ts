@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 import type { Transaction, Goal, Totals, SpendingInsight } from '../types'
 import { DEFAULT_GOALS } from '../lib/constants'
-import { supabase } from '../lib/supabase'
+import { supabase, isSupabaseConfigured } from '../lib/supabase'
 
 // ─── State Shape ──────────────────────────────────────────────────────────────
 
@@ -51,6 +51,10 @@ export const useBudgetStore = create<BudgetStore>()(
       if (get().isInitialized) return
       set({ isLoading: true, error: null })
       try {
+        if (!isSupabaseConfigured) {
+          throw new Error('Missing Supabase configuration. Operating in offline mode.')
+        }
+
         const fetchPromise = Promise.all([
           supabase.from('transactions').select('*').order('date', { ascending: false }),
           supabase.from('goals').select('*').order('created_at', { ascending: true }),

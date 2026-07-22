@@ -31,6 +31,7 @@ function PageSkeleton() {
 export default function App() {
   const initialize = useBudgetStore((s) => s.initialize)
   const isInitialized = useBudgetStore((s) => s.isInitialized)
+  const error = useBudgetStore((s) => s.error)
 
   useEffect(() => {
     initialize()
@@ -51,6 +52,11 @@ export default function App() {
     <div className="shell">
       <Sidebar />
       <main className="main" id="main-content">
+        {error && (
+          <div style={{ background: '#3b2525', color: '#ff8a8a', padding: '12px 20px', borderRadius: '8px', marginBottom: '20px', border: '1px solid #ff5c5c', fontSize: '0.9rem' }}>
+            <strong>Warning:</strong> {error}
+          </div>
+        )}
         <div className="topbar">
           <h1>
             <PageTitle />

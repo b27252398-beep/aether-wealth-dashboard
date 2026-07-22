@@ -4,7 +4,7 @@ import { resolve } from 'path'
 
 export default defineConfig({
   base: '/aether-wealth-dashboard/',
-  plugins: [react()], build: { sourcemap: true },
+  plugins: [react()],
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
