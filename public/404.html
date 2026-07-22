@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // Single Page App redirect for GitHub Pages
+      // Preserves the path and redirects back to index.html
+      var path = window.location.pathname
+      var search = window.location.search
+      var hash = window.location.hash
+      var base = '/aether-wealth-dashboard'
+      var redirect = base + '/?p=' + encodeURIComponent(path.slice(base.length) + search + hash)
+      window.location.replace(redirect)
+    </script>
+  </head>
+  <body></body>
+</html>

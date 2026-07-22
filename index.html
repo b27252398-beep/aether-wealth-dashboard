@@ -9,6 +9,17 @@
     <meta property="og:description" content="A premium, privacy-first wealth management dashboard." />
     <meta property="og:type" content="website" />
     <title>Aether — Wealth Management</title>
+    <script>
+      // GitHub Pages SPA redirect handler
+      // Reads the encoded path from the 404.html redirect and restores it
+      ;(function () {
+        var p = window.location.search.slice(1)
+        if (p.startsWith('p=')) {
+          var path = decodeURIComponent(p.slice(2))
+          window.history.replaceState(null, '', '/aether-wealth-dashboard' + (path || '/'))
+        }
+      })()
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

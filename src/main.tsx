@@ -10,7 +10,7 @@ if (!rootEl) throw new Error('Root element not found — check your index.html')
 
 ReactDOM.createRoot(rootEl).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/aether-wealth-dashboard">
       <App />
       <Toaster
         position="bottom-right"
