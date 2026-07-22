@@ -1,6 +1,6 @@
 import { useBudgetStore } from '../store/useBudgetStore'
 import NetWorthCrystal from './NetWorthCrystal'
-import { formatCurrency, formatCurrencyCompact } from '../lib/formatters'
+import { formatCurrency } from '../lib/formatters'
 
 export default function HeroNetWorth() {
   const totals = useBudgetStore((s) => s.totals())
