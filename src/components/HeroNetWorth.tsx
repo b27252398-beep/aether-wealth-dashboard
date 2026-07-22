@@ -18,7 +18,7 @@ export default function HeroNetWorth() {
             className="balance-xl"
             aria-label={`Net worth: ${formatCurrency(totals.netWorth)} rupees`}
           >
-            ${formatCurrency(totals.netWorth)}
+            ₹{formatCurrency(totals.netWorth)}
           </div>
           <div className={`pill ${isUp ? 'up' : 'down'}`} aria-live="polite">
             {isUp ? '↗' : '↘'} {Math.abs(retentionPct)}% of income retained
@@ -29,20 +29,20 @@ export default function HeroNetWorth() {
 
       <div className="mini-stat-stack">
         <div className="glass mini-stat">
-          <div className="mini-icon cyan" aria-hidden="true">↑</div>
+          <div className="mini-icon cyan" aria-hidden="true">↗</div>
           <div>
             <div className="label">Total Income</div>
             <div className="value" aria-label={`Total income: ${formatCurrency(totals.income)} rupees`}>
-              ${formatCurrency(totals.income)}
+              ₹{formatCurrency(totals.income)}
             </div>
           </div>
         </div>
         <div className="glass mini-stat">
-          <div className="mini-icon violet" aria-hidden="true">↓</div>
+          <div className="mini-icon violet" aria-hidden="true">↘</div>
           <div>
             <div className="label">Total Expenses</div>
             <div className="value" aria-label={`Total expenses: ${formatCurrency(totals.expense)} rupees`}>
-              ${formatCurrency(totals.expense)}
+              ₹{formatCurrency(totals.expense)}
             </div>
           </div>
         </div>

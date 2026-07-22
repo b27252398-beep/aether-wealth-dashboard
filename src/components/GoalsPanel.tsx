@@ -132,7 +132,7 @@ export default function GoalsPanel() {
                     title="Click to edit"
                     aria-label={`Saved ₹${formatCurrency(g.saved, 0)} of ₹${formatCurrency(g.target, 0)}. Click to edit.`}
                   >
-                    ${formatCurrency(g.saved, 0)} of ${formatCurrency(g.target, 0)}
+                    ₹{formatCurrency(g.saved, 0)} of ₹{formatCurrency(g.target, 0)}
                   </span>
                 )}
               </div>
