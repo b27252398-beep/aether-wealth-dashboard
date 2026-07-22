@@ -29,8 +29,8 @@ function createDummyClient() {
     from: () => ({
       select: () => ({ order: () => Promise.resolve({ data: [], error: null }) }),
       insert: () => ({ select: () => ({ single: () => Promise.resolve({ data: null, error: new Error('Offline mode: Cannot modify data.') }) }) }),
-      update: () => Promise.resolve({ data: null, error: new Error('Offline mode: Cannot modify data.') }),
-      delete: () => Promise.resolve({ data: null, error: new Error('Offline mode: Cannot modify data.') }),
+      update: () => ({ eq: () => Promise.resolve({ data: null, error: new Error('Offline mode: Cannot modify data.') }) }),
+      delete: () => ({ eq: () => Promise.resolve({ data: null, error: new Error('Offline mode: Cannot modify data.') }) }),
     })
   }
 }
