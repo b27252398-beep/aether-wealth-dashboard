@@ -230,6 +230,7 @@ select {
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-card);
   padding: 1.5rem;
+  min-width: 0;
 }
 
 /* ---------- Hero net worth ---------- */
@@ -448,6 +449,7 @@ select {
   background: var(--input-bg);
   color: var(--on-surface);
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 .form-field input:focus,
@@ -498,6 +500,7 @@ select {
   margin-top: 4px;
   box-shadow: 0 0 24px rgba(0, 245, 255, 0.35);
   transition: transform 0.1s ease, box-shadow 0.15s ease;
+  width: 100%;
 }
 
 .submit-btn:hover {
