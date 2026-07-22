@@ -354,6 +354,7 @@ select {
 }
 
 .two-col {
+  min-width: 0;
   display: grid;
   grid-template-columns: 1fr 1.3fr;
   gap: 20px;
@@ -812,3 +813,6 @@ select {
   box-shadow: 0 0 20px rgba(0, 245, 255, 0.12);
 }
 
+
+.panel { min-width: 0; min-height: 0; overflow: hidden; }
+.two-col > * { min-width: 0; }
