@@ -51,10 +51,17 @@ export const useBudgetStore = create<BudgetStore>()(
       if (get().isInitialized) return
       set({ isLoading: true, error: null })
       try {
-        const [txRes, goalsRes] = await Promise.all([
+        const fetchPromise = Promise.all([
           supabase.from('transactions').select('*').order('date', { ascending: false }),
           supabase.from('goals').select('*').order('created_at', { ascending: true }),
         ])
+
+        // Add a 5 second timeout to prevent infinite hanging if URL is invalid/unreachable
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Connection timeout. Please check your Supabase URL.')), 5000)
+        )
+
+        const [txRes, goalsRes] = await Promise.race([fetchPromise, timeoutPromise]) as any
 
         if (txRes.error) throw txRes.error
         if (goalsRes.error) throw goalsRes.error
