@@ -5,12 +5,15 @@ import { Toaster } from 'sonner'
 import App from './App'
 import './index.css'
 
+import { ErrorBoundary } from './ErrorBoundary'
+
 const rootEl = document.getElementById('root')
 if (!rootEl) throw new Error('Root element not found — check your index.html')
 
 ReactDOM.createRoot(rootEl).render(
   <React.StrictMode>
-    <BrowserRouter basename="/aether-wealth-dashboard">
+    <ErrorBoundary>
+      <BrowserRouter basename="/aether-wealth-dashboard">
       <App />
       <Toaster
         position="bottom-right"
@@ -24,5 +27,6 @@ ReactDOM.createRoot(rootEl).render(
         }}
       />
     </BrowserRouter>
+    </ErrorBoundary>
   </React.StrictMode>
 )
