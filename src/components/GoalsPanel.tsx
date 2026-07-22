@@ -66,7 +66,7 @@ export default function GoalsPanel() {
             />
           </div>
           <div className="form-field">
-            <label htmlFor="goal-target">Target ($)</label>
+            <label htmlFor="goal-target">Target (₹)</label>
             <input
               id="goal-target"
               type="number"
@@ -78,7 +78,7 @@ export default function GoalsPanel() {
             />
           </div>
           <div className="form-field">
-            <label htmlFor="goal-saved">Already Saved ($)</label>
+            <label htmlFor="goal-saved">Already Saved (₹)</label>
             <input
               id="goal-saved"
               type="number"
@@ -130,7 +130,7 @@ export default function GoalsPanel() {
                     onClick={() => startEdit(g.id, g.saved)}
                     onKeyDown={(e) => e.key === 'Enter' && startEdit(g.id, g.saved)}
                     title="Click to edit"
-                    aria-label={`Saved $${formatCurrency(g.saved, 0)} of $${formatCurrency(g.target, 0)}. Click to edit.`}
+                    aria-label={`Saved ₹${formatCurrency(g.saved, 0)} of ₹${formatCurrency(g.target, 0)}. Click to edit.`}
                   >
                     ${formatCurrency(g.saved, 0)} of ${formatCurrency(g.target, 0)}
                   </span>

@@ -26,13 +26,13 @@ describe('formatCurrency', () => {
 
 describe('formatCurrencyCompact', () => {
   it('shows M suffix for millions', () => {
-    expect(formatCurrencyCompact(1500000)).toBe('$1.50M')
+    expect(formatCurrencyCompact(1500000)).toBe('₹1.50M')
   })
   it('shows K suffix for thousands', () => {
-    expect(formatCurrencyCompact(5000)).toBe('$5.0K')
+    expect(formatCurrencyCompact(5000)).toBe('₹5.0K')
   })
   it('shows full amount for small numbers', () => {
-    expect(formatCurrencyCompact(500)).toBe('$500.00')
+    expect(formatCurrencyCompact(500)).toBe('₹500.00')
   })
 })
 

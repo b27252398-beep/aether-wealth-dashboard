@@ -50,7 +50,7 @@ export default function AllocationChart() {
                   borderRadius: 10,
                   fontSize: 12,
                 }}
-                formatter={(v: number) => [`$${v.toFixed(2)}`, 'Amount']}
+                formatter={(v: number) => [`₹${v.toFixed(2)}`, 'Amount']}
               />
             </PieChart>
           </ResponsiveContainer>

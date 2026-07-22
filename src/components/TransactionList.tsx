@@ -85,7 +85,7 @@ export default function TransactionList() {
                   {t.category} · {t.date}
                 </div>
               </div>
-              <div className={`tx-amount ${t.type}`} aria-label={`${t.type === 'income' ? 'Income' : 'Expense'}: ${formatCurrency(t.amount)} dollars`}>
+              <div className={`tx-amount ${t.type}`} aria-label={`${t.type === 'income' ? 'Income' : 'Expense'}: ${formatCurrency(t.amount)} rupees`}>
                 {t.type === 'income' ? '+' : '−'}${formatCurrency(t.amount)}
               </div>
               <button

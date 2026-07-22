@@ -91,7 +91,7 @@ export default function PerformanceChart() {
                 fontSize: 12,
               }}
               labelStyle={{ color: '#dae2fd' }}
-              formatter={(v: number) => [`$${v.toFixed(2)}`, 'Net Worth']}
+              formatter={(v: number) => [`₹${v.toFixed(2)}`, 'Net Worth']}
             />
             <Area
               type="monotone"

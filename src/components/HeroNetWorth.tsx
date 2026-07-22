@@ -16,7 +16,7 @@ export default function HeroNetWorth() {
           <div className="label-caps">Total Net Worth</div>
           <div
             className="balance-xl"
-            aria-label={`Net worth: ${formatCurrency(totals.netWorth)} dollars`}
+            aria-label={`Net worth: ${formatCurrency(totals.netWorth)} rupees`}
           >
             ${formatCurrency(totals.netWorth)}
           </div>
@@ -32,7 +32,7 @@ export default function HeroNetWorth() {
           <div className="mini-icon cyan" aria-hidden="true">↑</div>
           <div>
             <div className="label">Total Income</div>
-            <div className="value" aria-label={`Total income: ${formatCurrency(totals.income)} dollars`}>
+            <div className="value" aria-label={`Total income: ${formatCurrency(totals.income)} rupees`}>
               ${formatCurrency(totals.income)}
             </div>
           </div>
@@ -41,7 +41,7 @@ export default function HeroNetWorth() {
           <div className="mini-icon violet" aria-hidden="true">↓</div>
           <div>
             <div className="label">Total Expenses</div>
-            <div className="value" aria-label={`Total expenses: ${formatCurrency(totals.expense)} dollars`}>
+            <div className="value" aria-label={`Total expenses: ${formatCurrency(totals.expense)} rupees`}>
               ${formatCurrency(totals.expense)}
             </div>
           </div>

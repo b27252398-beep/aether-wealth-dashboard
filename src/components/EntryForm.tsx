@@ -82,7 +82,7 @@ export default function EntryForm() {
         </div>
 
         <div className="form-field">
-          <label htmlFor="entry-amount">Amount ($)</label>
+          <label htmlFor="entry-amount">Amount (₹)</label>
           <input
             id="entry-amount"
             type="number"
