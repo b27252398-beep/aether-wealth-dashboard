@@ -53,7 +53,7 @@ describe('useBudgetStore — totals()', () => {
 
 describe('useBudgetStore — addTransaction()', () => {
   it('adds a transaction with auto-generated id and createdAt', () => {
-    const { addTransaction, transactions } = useBudgetStore.getState()
+    const { addTransaction } = useBudgetStore.getState()
     addTransaction({ title: 'Test', amount: 100, type: 'income', category: 'Other', date: '2024-01-01' })
     const txns = useBudgetStore.getState().transactions
     expect(txns).toHaveLength(1)

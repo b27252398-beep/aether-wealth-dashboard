@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 import type { Transaction, Goal, Totals, SpendingInsight } from '../types'
@@ -10,8 +11,8 @@ interface BudgetState {
   transactions: Transaction[]
   goals: Goal[]
   isLoading: boolean
-  isInitialized: boolean
   error: string | null
+  user: any | null
 }
 
 // ─── Actions Shape ────────────────────────────────────────────────────────────
@@ -24,6 +25,8 @@ interface BudgetActions {
   addGoal: (goal: Omit<Goal, 'id'>) => Promise<void>
   deleteGoal: (id: string) => Promise<void>
   clearAll: () => Promise<void>
+  setUser: (user: any | null) => void
+  signOut: () => Promise<void>
 }
 
 // ─── Derived / Computed ───────────────────────────────────────────────────────
@@ -45,6 +48,7 @@ export const useBudgetStore = create<BudgetStore>()(
     isLoading: false,
     isInitialized: false,
     error: null,
+    user: null,
 
     // ── Actions ──────────────────────────────────────────────────────────
     initialize: async () => {
@@ -71,7 +75,7 @@ export const useBudgetStore = create<BudgetStore>()(
         if (goalsRes.error) throw goalsRes.error
 
         set((state) => {
-          // @ts-ignore mapping supabase types to local types
+          // @ts-expect-error mapping supabase types to local types
           state.transactions = (txRes.data || []).map((t: any) => ({
             id: t.id,
             title: t.title,
@@ -271,6 +275,14 @@ export const useBudgetStore = create<BudgetStore>()(
           state.goals = prevGoals
         })
       }
+    },
+
+    setUser: (user) => set({ user }),
+    
+    signOut: async () => {
+      await supabase.auth.signOut()
+      set({ user: null, transactions: [], goals: DEFAULT_GOALS, isInitialized: false })
+      get().initialize()
     },
 
     // ── Computed (derived) ────────────────────────────────────────────────

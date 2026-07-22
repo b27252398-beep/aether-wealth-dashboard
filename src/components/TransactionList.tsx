@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useBudgetStore } from '../store/useBudgetStore'
 import { formatCurrency, initials, exportToCSV } from '../lib/formatters'
-import type { Transaction } from '../types'
 
 export default function TransactionList() {
   const transactions = useBudgetStore((s) => s.transactions)

@@ -8,6 +8,10 @@
   --on-surface: #dae2fd;
   --on-surface-variant: #96a3c4;
   --outline: #3a4a6a;
+  
+  --bg-gradient-1: rgba(0, 245, 255, 0.10);
+  --bg-gradient-2: rgba(167, 139, 250, 0.08);
+  --bg-gradient-3: rgba(16, 185, 129, 0.07);
 
   --neon-cyan: #00f5ff;
   --neon-cyan-soft: #63f7ff;
@@ -21,6 +25,27 @@
   --radius-card: 1rem;
   --radius-pill: 9999px;
   --blur-glass: 24px;
+}
+
+[data-theme='light'] {
+  --midnight: #f8fafc;
+  --surface: #ffffff;
+  --surface-container: #f1f5f9;
+  --surface-container-high: #e2e8f0;
+  --surface-container-highest: #cbd5e1;
+  --on-surface: #0f172a;
+  --on-surface-variant: #475569;
+  --outline: #cbd5e1;
+  
+  --bg-gradient-1: rgba(0, 245, 255, 0.20);
+  --bg-gradient-2: rgba(167, 139, 250, 0.15);
+  --bg-gradient-3: rgba(16, 185, 129, 0.12);
+
+  --neon-cyan: #0284c7;
+  --neon-cyan-soft: #0ea5e9;
+  --emerald: #059669;
+  --violet: #7c3aed;
+  --error: #ef4444;
 }
 
 * {
@@ -39,10 +64,11 @@ body {
   color: var(--on-surface);
   background: var(--midnight);
   background-image:
-    radial-gradient(circle at 15% 10%, rgba(0, 245, 255, 0.10), transparent 40%),
-    radial-gradient(circle at 85% 30%, rgba(167, 139, 250, 0.08), transparent 45%),
-    radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.07), transparent 40%);
+    radial-gradient(circle at 15% 10%, var(--bg-gradient-1), transparent 40%),
+    radial-gradient(circle at 85% 30%, var(--bg-gradient-2), transparent 45%),
+    radial-gradient(circle at 50% 90%, var(--bg-gradient-3), transparent 40%);
   background-attachment: fixed;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button,

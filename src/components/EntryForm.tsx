@@ -1,6 +1,5 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { useBudgetStore } from '../store/useBudgetStore'
-import { formatCurrency, getMonthKey } from '../lib/formatters'
 import { CATEGORIES } from '../lib/constants'
 import type { TransactionType } from '../types'
 
